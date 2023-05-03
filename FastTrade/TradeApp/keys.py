@@ -1,0 +1,3 @@
+api_key = 'V9GyIlfInl8eO3TKpVOXb13gvXs78ozMvKZC3xOpIIepfoYmXCgXhojazGwNWQK7'
+api_secret = 'lAqnVmsseWXmcnDcceeC2tkjqoZXbiqKdxo5hD3hSOnZIfL7MgccYoSkvUln6DqY'
+#dqdkdhwqi
