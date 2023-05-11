@@ -28,4 +28,5 @@ urlpatterns = [
 
     # path('FastTrade\templates\TradeApp\main.html', buy, name = 'buy'),
     path(COIN_LINK, LINK_TO_COIN,name = 'LINK'),
+    # path('https://www.binance.com/api/v3/avgPrice', LINK_TO_COIN,name = 'LINK'),
     ]

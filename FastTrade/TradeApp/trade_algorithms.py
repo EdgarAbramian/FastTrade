@@ -168,31 +168,30 @@ def autopilot():
         except:
             Exception 
       
-        time.sleep(30) 
-
+        time.sleep(15) 
 
 if __name__ == "__main__":
     autopilot()
 
 
 
-# 0  BNBBUSD                 
-# 1   BTCBUSD              
-# 2   ETHBUSD                
-# 3   LTCBUSD                 
-# 4   TRXBUSD                 
-# 5   XRPBUSD                 
-# 6   BNBUSDT                 
-# 7   BTCUSDT              
-# 8   ETHUSDT                
-# 9   LTCUSDT                 
-# 10  TRXUSDT                 
-# 11  XRPUSDT                 
-# 12   BNBBTC                  
-# 13   ETHBTC                 
-# 14   LTCBTC                  
-# 15   TRXBTC                  
-# 16   XRPBTC                 
-# 17   LTCBNB     
-# 18   TRXBNB                 
-# 19   XRPBNB
+#   'BNBBUSD'                 
+#    'BTCBUSD'              
+#    'ETHBUSD'                
+#    'LTCBUSD'                 
+#   'TRXBUSD'                 
+#    'XRPBUSD'                 
+#    'BNBUSDT'                 
+#    'BTCUSDT'              
+#    'ETHUSDT'                
+#    'LTCUSDT'                 
+#   'TRXUSDT'                 
+#   'XRPUSDT'                 
+#    'BNBBTC'                  
+#    'ETHBTC'                 
+#    'LTCBTC'                  
+#    'TRXBTC'                  
+#    'XRPBTC'                 
+#   'LTCBNB'     
+#    'TRXBNB'                 
+#    'XRPBNB'
