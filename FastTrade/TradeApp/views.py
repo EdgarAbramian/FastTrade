@@ -8,16 +8,23 @@ import datetime
 from tradingview_ta import TA_Handler, Interval, Exchange
 # from .models import UserInfo
 from django.shortcuts import redirect 
+
+
+#Дефолтные ключи
+#Используются если введены неправильные ключи  или ключи вообще не введены 
 api_key = 'V9GyIlfInl8eO3TKpVOXb13gvXs78ozMvKZC3xOpIIepfoYmXCgXhojazGwNWQK7'
 api_secret = 'lAqnVmsseWXmcnDcceeC2tkjqoZXbiqKdxo5hD3hSOnZIfL7MgccYoSkvUln6DqY' 
+
 COIN_LINK= 'https://www.binance.com/ru/futures/'
 ASSET = []
+
 #СОЗДАНИЕ КЛИЕНТА
 client = Client(api_key, api_secret)
 
 #ПОЛУЧЕНИЕ ТЕКУЩЕЙ ЦЕНЫ 
 CURR_PRICE = lambda asset: float((client.get_symbol_ticker(symbol = asset)['price']))
 
+#Проверка на индикаторы 
 REC_IS_SELL = lambda handler: handler.get_analysis().summary['RECOMMENDATION'] == 'SELL'
 
 def count(ar,sym):
@@ -38,6 +45,7 @@ def last_data(symbol, interval, lookback):
     return frame
     #("BTCUSDT", '1m', '2')
 
+#Алгорит Линий Болинджера
 def boll_lines(df):
     df['SMA'] = df.close.rolling(window=20).mean()
     df['stddev'] = df.close.rolling(window=20).std()
@@ -56,6 +64,7 @@ def boll_lines(df):
         return False#  TO SELL
     return True#  NOT TO SELL
 
+#Лучшие криптовалюты которые были найдены нашей командой 
 tickers = ['BNBBUSD', 
    'BTCBUSD',              
    'ETHBUSD',         
@@ -104,9 +113,11 @@ def top_coin(INTERVAL):
         except:
             Exception
 
+#Главная страница
 def index_page(requests):
     return render(requests, 'TradeApp/main.html',{'title':"FastTrade"})
 
+#Переход на автоматическую торговлю
 def auto(requests):
     TOP_COIN_INFO = top_coin(Interval.INTERVAL_15_MINUTES)
     COIN = TOP_COIN_INFO['coin']
@@ -145,19 +156,23 @@ def auto(requests):
       
         time.sleep(15) 
 
+#рекомендация на покупку на длительный срок
 def rec_long(requests):
     res = top_coin(Interval.INTERVAL_1_MONTH)
     ASSET.append(res["coin"])
     return render(requests, 'TradeApp/rec.html',{'INTERVAL':"LONG",'COIN':res["coin"],'BUY':res['analysis']['BUY'],'SELL':res['analysis']['SELL']})
 
+#рекомендация на покупку на короткий срок
 def rec_short(requests):
     res = top_coin(Interval.INTERVAL_15_MINUTES)
     ASSET.append(res["coin"])
     return render(requests, 'TradeApp/short.html',{'INTERVALs':"SHORT",'COINs':res["coin"],'BUYs':res['analysis']['BUY'],'SELLs':res['analysis']['SELL']})
 
+#рекомендационная страница
 def rec(requests):
     return render(requests, 'TradeApp/rec.html')
 
+# Создание ссылки на криптолюту в binance
 def LINK_TO_COIN(requests):
     response = redirect(COIN_LINK + ASSET[-1]) 
     return response
