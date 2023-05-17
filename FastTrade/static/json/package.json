@@ -1,0 +1,12 @@
+{
+	"name": "simple app",
+	"version": "0.0.1",
+	"author": "Abramian E.O.",
+	"scripts": {
+		"start": "node price.js"
+	},
+	"dependencies": {
+		"binance": "^2.6.0",
+		"ccxt": "^3.0.90"
+	}
+}
